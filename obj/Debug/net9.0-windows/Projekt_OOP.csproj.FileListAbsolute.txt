@@ -29,3 +29,4 @@ C:\Github\Projekt_OOP\obj\Debug\net9.0-windows\refint\Projekt_OOP.dll
 C:\Github\Projekt_OOP\obj\Debug\net9.0-windows\Projekt_OOP.pdb
 C:\Github\Projekt_OOP\obj\Debug\net9.0-windows\Projekt_OOP.genruntimeconfig.cache
 C:\Github\Projekt_OOP\obj\Debug\net9.0-windows\ref\Projekt_OOP.dll
+C:\Github\Projekt_OOP\obj\Debug\net9.0-windows\Projekt_OOP.sourcelink.json

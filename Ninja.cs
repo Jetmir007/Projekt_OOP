@@ -14,7 +14,7 @@ namespace Projekt_OOP
 
         public void Attack(CharacterBase opponent)
         {
-            opponent.TakeDamage(12);
+            opponent.TakeDamage(15);
         }
 
         public void SpecialAttack(CharacterBase opponent)

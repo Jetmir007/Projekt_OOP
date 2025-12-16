@@ -11,7 +11,7 @@ namespace Projekt_OOP
     {
         int GetMoveDirection(KeyboardState current);
         bool JumpPressed(KeyboardState current, KeyboardState previous);
-        bool AttackPressed(KeyboardState current, KeyboardState previous);
+        bool AttackPressed();
         bool SpecialPressed(KeyboardState current, KeyboardState previous);
     }
 }

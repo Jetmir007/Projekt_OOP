@@ -87,7 +87,7 @@ namespace Projekt_OOP
                     break;
 
                 case GameState.Results:
-                    if (cur.IsKeyDown(Keys.Enter))
+                    if (cur.IsKeyDown(Keys.R) && _prev.IsKeyUp(Keys.R))
                         _state = GameState.CharacterSelect;
                     break;
             }
@@ -159,6 +159,15 @@ namespace Projekt_OOP
             {
                 p1.Draw(_sb);
                 p2.Draw(_sb);
+                _sb.DrawString(font, $"P1 HP: {p1.Hp}", new Vector2(50, 50), Color.White);
+                _sb.DrawString(font, $"P2 HP: {p2.Hp}", new Vector2(1400, 50), Color.White);
+            }
+
+            if(_state == GameState.Results)
+            {
+                string result = p1.Hp <= 0 && p2.Hp <= 0 ? "Draw!" : p1.Hp <= 0 ? "Player 2 Wins!" : "Player 1 Wins!";
+                _sb.DrawString(font, result, new Vector2(800, 400), Color.White);
+                _sb.DrawString(font, "Press R to return to Character Select", new Vector2(600, 500), Color.White);
             }
 
             _sb.End();

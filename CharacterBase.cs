@@ -17,6 +17,7 @@ namespace Projekt_OOP
         protected float Speed = 4f;
         protected float VelocityY = 0f;
         protected bool IsGrounded = true;
+        protected bool Kanattackera = true;
 
         public CharacterBase(Texture2D texture)
         {
@@ -43,27 +44,48 @@ namespace Projekt_OOP
             }
         }
 
-        public void HandleInput(
-            IPlayerInput input,
-            KeyboardState current,
-            KeyboardState previous,
-            CharacterBase opponent)
+        public void HandleInput( IPlayerInput input, KeyboardState current, KeyboardState previous, CharacterBase opponent)
         {
             int dir = input.GetMoveDirection(current);
-            if (dir != 0)
+            if (dir != 0){
                 Move(dir);
-
-            if (input.JumpPressed(current, previous))
+            }
+            if (input.JumpPressed(current, previous)){
                 Jump();
-
+            }
             if (this is ICharacterAction action)
             {
-                if (input.AttackPressed(current, previous))
+                if (Keyboard.GetState().IsKeyDown(Keys.E)&&Kanattackera||Keyboard.GetState().IsKeyDown(Keys.O)&&Kanattackera){
+                    Kanattackera=false;
                     action.Attack(opponent);
-
-                if (input.SpecialPressed(current, previous))
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.F)&&Kanattackera||Keyboard.GetState().IsKeyDown(Keys.P)&&Kanattackera){
+                    Kanattackera=false;
                     action.SpecialAttack(opponent);
+                }
             }
+            if (Keyboard.GetState().IsKeyUp(Keys.E) && Keyboard.GetState().IsKeyUp(Keys.O))
+            {
+                Kanattackera = true;
+            }
+            if( Keyboard.GetState().IsKeyUp(Keys.F) && Keyboard.GetState().IsKeyUp(Keys.P))
+            {
+                Kanattackera = true;
+            }
+        }
+
+        public bool IsInRange(CharacterBase opp, int range)
+        {   
+            float distance = 0f;
+            if(opp.Position.X < this.Position.X)
+            {
+                distance = this.Position.X - opp.Position.X;
+            }
+            else
+            {
+                distance = opp.Position.X - this.Position.X;
+            }
+            return distance <= range;
         }
 
         public virtual void Update(GameTime gameTime)

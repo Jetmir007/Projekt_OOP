@@ -29,8 +29,8 @@ namespace Projekt_OOP
         public bool JumpPressed(KeyboardState c, KeyboardState p)
             => c.IsKeyDown(_jump) && !p.IsKeyDown(_jump);
 
-        public bool AttackPressed(KeyboardState c, KeyboardState p)
-            => c.IsKeyDown(_attack) && !p.IsKeyDown(_attack);
+        public bool AttackPressed()
+            => true;
 
         public bool SpecialPressed(KeyboardState c, KeyboardState p)
             => c.IsKeyDown(_special) && !p.IsKeyDown(_special);

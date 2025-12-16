@@ -14,12 +14,18 @@ namespace Projekt_OOP
 
         public void Attack(CharacterBase opponent)
         {
-            opponent.TakeDamage(10);
+            if(IsInRange(opponent, 100))
+            {
+                opponent.TakeDamage(10);
+            }
         }
 
         public void SpecialAttack(CharacterBase opponent)
         {
-            opponent.TakeDamage(20);
+            if(IsInRange(opponent, 70))
+            {
+                opponent.TakeDamage(20);
+            }
         }
     }
 }
